@@ -25,9 +25,7 @@
                   <form action="posts/{{ $post->id }}" method="POST">
                     @csrf
                     @method("DELETE")
-
                     <button style="margin-left: -150px" type="submit" name="submit" value="Delete"class="btn btn-danger">Delete</button>
-
                   </form>
                 </td>
             </tr>
