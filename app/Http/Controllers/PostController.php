@@ -42,8 +42,33 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|max:100',
+            'description' => 'required'
+        ]);
+
+        if($request->hasFile('img')){
+
+            $filenameWithExt = $request->file('img')->getClientOriginalName();
+
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+
+            $extension = $request->file('img')->getClientOriginalExtension();
+
+            $filenameToStore = $filename.'_'.time().'.'.$extension;
+
+            $path = $request->file('img')->storeAs('public/img',$filenameToStore);
+
+        } else {    
+            $filenameToStore = '';
+        }
+        
         //
-        Post::create(["title" => $request->title, "description"=> $request->description]);
+        Post::create([
+        "title" => $request->title, 
+        "description"=> $request->description, 
+        "img"=> $filenameToStore
+        ]);
         return redirect('/posts');
     }
     /**
