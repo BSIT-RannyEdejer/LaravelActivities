@@ -7,6 +7,7 @@
       <tr>
         <th>Title</th>
         <th>Description</th>
+        <th>Created At</th>
       </tr>
     </thead>
     <tbody>
@@ -14,6 +15,15 @@
             <tr>
                 <td>{{$post->title}}</td>
                 <td>{{$post->description}}</td>
+                <td>{{$post->created_at}}</td>
+                <td> 
+                @if ($post -> img)
+                  <img src="{{ URL::asset('/storage/img/'.$post->img) }}" alt=" {{ $post->img }}" style="width:100px; height: 100px"/>
+                @else 
+                  No Image Available
+                @endif
+              
+               
             </tr>
     </tbody>
 </table>
