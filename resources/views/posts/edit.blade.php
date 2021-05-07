@@ -3,7 +3,7 @@
 
 @section('content')
 
-<h1 style="width: 50%; margin-left:auto; margin-right: auto" >Edit Book</h1>
+<h1 style="width: 50%; margin-left:auto; margin-right: auto" >Edit Posts</h1>
 <form action="/posts/{{ $post->id }}" method="POST" style="width: 50%; margin-left:auto; margin-right: auto">
     @csrf
     @method('PUT')

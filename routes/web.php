@@ -14,14 +14,16 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/',function() {
-    return view('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+
+Auth::routes();
+
+Auth::routes();
+Route::get('/home',function(){
+    return redirect('/posts');
 });
 
 Route::get('posts', 'PostController@method');
 Route::resource('posts', PostController::class);
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/posts', [App\Http\Controllers\PostController::class, 'index'])->name('post');
+Route::resource('/comments', App\Http\Controllers\CommentController::class);

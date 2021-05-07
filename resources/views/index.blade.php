@@ -19,19 +19,20 @@
                 <td>{{$post->description}}</td>
                 <td> 
                   <a class="btn btn-primary" href="/posts/{{ $post->id }}" role="button">View</a>  
+                  <!--
                   <a class="btn btn-primary" href="/posts/{{ $post->id }}/edit" role="button">Edit</a>
                 </td>
-                <td >
+                <td>
                   <form action="posts/{{ $post->id }}" method="POST">
-                    @csrf  
+                    @csrf
                     @method("DELETE")
-                    <button style="margin-left: -180px;" type="submit" name="submit" value="Delete"class="btn btn-danger">Delete</button>
+                    <button style="margin-left: -205px" type="submit" name="submit" value="Delete"class="btn btn-danger">Delete</button>
                   </form>
-                </td>
+                </td>-->
             </tr>
         @endforeach
     </tbody>
     
   </table>
 
-@endsection 
+@endsection     

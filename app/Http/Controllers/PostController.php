@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -18,7 +20,11 @@ class PostController extends Controller
         //$posts = \DB::table('posts')->get();
         //return $posts;
 
-        $posts = Post::get();
+        //$posts = Post::get();
+        $user = User::find(Auth::id());
+        $posts = $user->posts;
+            
+
         return view('posts.index',['posts'=> $posts]);
 
     }
@@ -27,7 +33,7 @@ class PostController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function create()
     {
         //
@@ -67,7 +73,8 @@ class PostController extends Controller
         Post::create([
         "title" => $request->title, 
         "description"=> $request->description, 
-        "img"=> $filenameToStore
+        "img"=> $filenameToStore,
+        "user_id"=> Auth::id()
         ]);
         return redirect('/posts');
     }
@@ -81,7 +88,9 @@ class PostController extends Controller
     {
         //
         $post = Post::find($id);
-        return view('posts.show')->with("post", $post);
+        $comments = $post->comments;
+        
+        return view('posts.show',compact('post','comments'));
     }
 
     /**

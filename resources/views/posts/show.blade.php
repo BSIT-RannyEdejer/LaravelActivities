@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <h1 style="width: 50%; margin-left:auto; margin-right: auto" >Show Book</h1>
+      <h1 style="width: 50%; margin-left:auto; margin-right: auto" >Show Posts</h1>
             <tr>
                 <td>{{$post->title}}</td>
                 <td>{{$post->description}}</td>
@@ -22,10 +22,9 @@
                 @else 
                   No Image Available
                 @endif
-              
-               
+                </td>
             </tr>
     </tbody>
 </table>
-
+@include('/posts/comments')
 @endsection 
