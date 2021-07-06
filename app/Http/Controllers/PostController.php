@@ -50,7 +50,8 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required|max:100',
-            'description' => 'required'
+            'description' => 'required',
+            'price' => 'required'
         ]);
 
         if($request->hasFile('img')){
@@ -73,6 +74,7 @@ class PostController extends Controller
         Post::create([
         "title" => $request->title, 
         "description"=> $request->description, 
+        "price"=> $request->price, 
         "img"=> $filenameToStore,
         "user_id"=> Auth::id()
         ]);
@@ -119,6 +121,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $post ->title =$request->title;
         $post ->description =$request->description;
+        $post ->price = $request ->price;
         $post-> save();
 
         return redirect('/posts');

@@ -18,7 +18,6 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('in
 
 Auth::routes();
 
-Auth::routes();
 Route::get('/home',function(){
     return redirect('/posts');
 });

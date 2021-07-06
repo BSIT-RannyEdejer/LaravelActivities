@@ -11,8 +11,8 @@
       </tr>
     </thead>
     <tbody>
-      <h1 style="width: 50%; margin-left:auto; margin-right: auto" >Posts</h1>
-      <a class="btn btn-primary" href="/posts/create" role="button" style="margin-left: 25%; margin-bottom: 10px; ">Add Posts</a>
+      <h1 style="width: 50%; margin-left:auto; margin-right: auto" >Products</h1>
+      <a class="btn btn-primary" href="/posts/create" role="button" style="margin-left: 25%; margin-bottom: 10px; ">Add Products</a>
         @foreach ($posts as $post)
             <tr>
                 <td>{{$post->title}}</td>

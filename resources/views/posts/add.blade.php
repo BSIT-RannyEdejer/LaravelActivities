@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <a class="btn btn-primary" href="/posts">Back</a> <br><br>
             <div class="card">       
-                <div class="card-header">New Post</div>
+                <div class="card-header">New Product</div>
                 <div class="card-body">
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -22,7 +22,7 @@
                         @csrf
                         
                         <div class="form-group row">
-                            <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
+                            <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Product Name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="title" type="text" class="form-control @error('title') is-invalid @enderror"  name="title" name="title" value="{{ old('title') }}"   autofocus>                            
@@ -43,6 +43,21 @@
                             </div>
                         
                             @error('description')
+                                <span class="invalid-feedback" role="alert"> 
+                                    {{ $message }}
+                                </span>                                
+                            @enderror
+
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="price" type="number" class="form-control @error('price') is-invalid @enderror"  name="price" name="price" value="{{ old('price') }}"   autofocus>                            
+                            </div>
+                        
+                            @error('price')
                                 <span class="invalid-feedback" role="alert"> 
                                     {{ $message }}
                                 </span>                                
